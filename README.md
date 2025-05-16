@@ -1,18 +1,19 @@
-# thindiffusion
+# Tortoise and Hare Guidance
 
-Example usage:
+## Measure quality metrics for a method
 ```
-accelerate launch -m experiments.batch_t2i  # Run all experiments in configs/t2i
-accelerate launch -m experiments.t2i with configs/t2i/cfg.yaml  # Run one experiment
-```
+accelerate launch main.py  # Run all experiments in configs/t2i
+accelerate launch -m experiments.t2i with configs/t2i/<config>.yaml  # Run one experiment
 
-## Calculate m
-
-```
-accelerate launch -m experiments.calc_m with configs/calc_m/sd3.5l.yaml
+python scripts/make_configs_<model>.py  # generate config files for experiment
 ```
 
-## Setup
+## Calculate cT, cH
+```
+accelerate launch -m experiments.calc_m with configs/calc_m/<model>.yaml
+```
+
+## Setup local config file for main.py
 ```
 cp configs/local_config.yaml.example configs/local_config.yaml
 ```
