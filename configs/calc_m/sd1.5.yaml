@@ -1,0 +1,10 @@
+path: images/calc_m_sd1.5_cpu
+solver_name: DDIMSolverRichardson
+solver_kwargs:
+  guidance_scale: 7.5
+model_name: StableDiffusionModel
+model_kwargs:
+  model_key: stable-diffusion-v1-5/stable-diffusion-v1-5
+  scheduler_name: DDIMScheduler
+dataset: sayakpaul/coco-30-val-2014
+num_inference_steps: 50

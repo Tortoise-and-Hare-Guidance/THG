@@ -1,0 +1,3 @@
+seed: 42
+t2i:
+  num_images: 30

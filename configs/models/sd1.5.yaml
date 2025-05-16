@@ -1,0 +1,4 @@
+model_name: StableDiffusionModel
+model_kwargs:
+  model_key: stable-diffusion-v1-5/stable-diffusion-v1-5
+  scheduler_name: DDIMScheduler

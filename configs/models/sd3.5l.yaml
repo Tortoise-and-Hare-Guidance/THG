@@ -1,0 +1,5 @@
+model_name: StableDiffusion3Model
+model_kwargs:
+  model_key: stabilityai/stable-diffusion-3.5-large
+batch_size: 5
+num_images: 1000

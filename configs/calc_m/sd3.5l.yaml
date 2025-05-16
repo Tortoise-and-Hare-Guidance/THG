@@ -1,0 +1,10 @@
+path: images/calc_m_sd3.5l
+solver_name: FlowMatchEulerSolverRichardson
+solver_kwargs:
+  guidance_scale: 3.5
+model_name: StableDiffusion3Model
+model_kwargs:
+  model_key: stabilityai/stable-diffusion-3.5-large
+dataset: sayakpaul/coco-30-val-2014
+num_inference_steps: 28
+batch_size: 5
