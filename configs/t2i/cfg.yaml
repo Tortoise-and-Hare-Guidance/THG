@@ -1,0 +1,4 @@
+num_inference_steps: 50
+solver_kwargs:
+  guidance_scale: 7.5
+solver_name: DDIMSolver

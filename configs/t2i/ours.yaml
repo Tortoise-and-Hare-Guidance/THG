@@ -1,0 +1,40 @@
+num_inference_steps: 50
+solver_kwargs:
+  boost_factor: 1.2
+  guidance_scale: 7.5
+  macro_steps:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 8
+  - 10
+  - 12
+  - 14
+  - 17
+  - 20
+  - 23
+  - 26
+  - 28
+  - 30
+  - 32
+  - 34
+  - 36
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+  t_hi: 38
+  t_lo: 0
+solver_name: LimitedBoostMultirateDDIMSolver

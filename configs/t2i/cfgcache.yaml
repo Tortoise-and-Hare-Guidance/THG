@@ -1,0 +1,9 @@
+num_inference_steps: 50
+solver_kwargs:
+  boost_factor: 1.2
+  caching_interval: 11
+  caching_start: 17
+  guidance_scale: 7.5
+  i_0: 14
+  radius: 10
+solver_name: FFTCachingDDIMSolver

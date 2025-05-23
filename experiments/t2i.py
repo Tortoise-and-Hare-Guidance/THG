@@ -115,23 +115,23 @@ def measure(
     cmmd = measure_cmmd(path, cmmd_model_name, batch_size, num_images)
     clip_score = measure_clip_score(path, captions, clip_score_model_name, batch_size)
     imagereward = measure_imagereward(path, captions, imagereward_model_name)
-    psnr, ssim = measure_psnr_ssim(path, gt_path, num_images)
+    # psnr, ssim = measure_psnr_ssim(path, gt_path, num_images)
 
     if accelerator.is_main_process:
         print(f"FID: {fid}")
         print(f"CMMD: {cmmd}")
         print(f"CLIP Score: {clip_score}")
         print(f"ImageReward: {imagereward}")
-        print(f"PSNR: {psnr}")
-        print(f"SSIM: {ssim}")
+        # print(f"PSNR: {psnr}")
+        # print(f"SSIM: {ssim}")
 
     return {
         "FID": fid,
         "CMMD": cmmd,
         "CLIP Score": clip_score,
         "ImageReward": imagereward,
-        "PSNR ": psnr,
-        "SSIM": ssim,
+        # "PSNR ": psnr,
+        # "SSIM": ssim,
     }
 
 

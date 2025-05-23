@@ -9,8 +9,8 @@ def dump(filename, data):
 
 
 def caching():
-    intervals = [3, 5, 7]
-    starts = [0, 17]
+    intervals = [11]
+    starts = [17]
     for interval in intervals:
         for start in starts:
             config_data = {
@@ -79,8 +79,8 @@ def boost():
 
 
 def fft():
-    intervals = [3, 5, 7]
-    starts = [0, 17]
+    intervals = [11]
+    starts = [17]
     radius_values = [10]
     for radius in radius_values:
         for interval in intervals:
@@ -133,7 +133,7 @@ def euler():
 
 
 def ddim():
-    for steps in range(25, 51, 5):
+    for steps in [35, 50]:
         config_data = {
             "solver_name": "DDIMSolver",
             "solver_kwargs": {
@@ -250,22 +250,74 @@ def mlb(path):
             dump(output_file, config_data)
 
 
+def mlb2(m):
+    config_data = {
+        "solver_name": "LimitedBoostMultirateDDIMSolver",
+        "solver_kwargs": {
+            "guidance_scale": 7.5,
+            "macro_steps": m,
+            "t_lo": 0,
+            "t_hi": 38,
+            "boost_factor": 1.2,
+        },
+        "num_inference_steps": 50,
+    }
+    output_file = os.path.join("configs/t2i", f"mlb_38_1.1.yaml")
+    dump(output_file, config_data)
+
+
 def main():
     os.mkdir("configs/t2i")
-    # caching()
+    caching()
     # gaussian()
     # boost()
-    # fft()
+    fft()
     # heun()
     # euler()
-    # ddim()
+    ddim()
     # cfgpp()
     # limited()
+
+    sd15_rho11 = [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        10,
+        12,
+        14,
+        17,
+        20,
+        23,
+        26,
+        28,
+        30,
+        32,
+        34,
+        36,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+    ]
+    mlb2(sd15_rho11)
 
     # multirate("images/calc_m_sd1.5/denoising_output.pt")
     # limited_back()
 
-    mlb("images/calc_m_sd1.5/denoising_output.pt")
+    # mlb("images/calc_m_sd1.5/denoising_output.pt")
 
 
 if __name__ == "__main__":

@@ -1,3 +1,4 @@
 seed: 42
 t2i:
   num_images: 30
+  batch_size: 5

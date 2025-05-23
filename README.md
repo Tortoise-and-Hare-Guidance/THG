@@ -1,18 +1,33 @@
-# thindiffusion
+# Tortoise and Hare Guidance
 
-Example usage:
+## Create Docker Environment
 ```
-accelerate launch -m experiments.batch_t2i  # Run all experiments in configs/t2i
-accelerate launch -m experiments.t2i with configs/t2i/cfg.yaml  # Run one experiment
+docker build -t thg:latest .
+docker run -d -it --gpus=all --ipc=host thg:latest
 ```
-
-## Calculate m
-
-```
-accelerate launch -m experiments.calc_m with configs/calc_m/sd3.5l.yaml
-```
-
 ## Setup
+
+Run inside docker container.
 ```
-cp configs/local_config.yaml.example configs/local_config.yaml
+git clone https://github.com/Tortoise-and-Hare-Guidance/THG
+cd THG
+python scripts/extract_coco30k.py  # Download coco 2014 30k dataset
+cp configs/local_config.yaml.example configs/local_config.yaml  # Use example config (generate 30 images)
+rm configs/models/sd3.5l.yaml  # Remove sd3.5l config for sd1.5 experiment
+mkdir -p /data/db
+(mongod > /dev/null 2>&1 &) ; disown  # Run mongodb background
+```
+## Run T2I task
+
+```
+accelerate launch main.py  # Run all experiments in configs/t2i
+
+python scripts/make_configs_<model>.py  # generate config files for experiment
+```
+
+## Calculate error bounds
+
+```
+accelerate launch -m experiments.calc_m with configs/calc_m/sd1.5.yaml
+accelerate launch -m experiments.calc_m with configs/calc_m/sd3.5l.yaml
 ```
